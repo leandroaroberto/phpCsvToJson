@@ -15,21 +15,17 @@ class Converter
 
     private function readTheFile(string $fileOutput): void
     {
-        try {
+        if (file_exists($fileOutput)) {
             $this->fileOutput = file($fileOutput);
-        } catch (Exception $e) {
-            echo $e->getMessage();
+        } else {
+            throw new \Error('File not found');
         }
     }
 
     public function convertToJson(): string
     {
         foreach ($this->fileOutput as $index => $value) {
-            try {
-                $columnFields = explode($this->separator, $value);
-            } catch (Exception $e) {
-                return 'Error: ' . $e->getMessage();
-            }
+            $columnFields = explode($this->separator, $value);
             $this->finalOutput .= $index != 0 ? '{' : '';
             foreach ($columnFields as $fieldIndex => $field) {
                 if ($index == 0) {
@@ -50,5 +46,10 @@ class Converter
 $csvFile = readline('Enter a csv file name: ');
 $delimiter = readline("Enter the delimiter (leave it blank for default ','):");
 
-$myJsonFile = new Converter($csvFile, $delimiter ?: ',');
-echo "\n\n" . $myJsonFile->convertToJson() . "\n\n";
+try {
+    $myJsonFile = new Converter($csvFile, $delimiter ?: ',');
+    $response = $myJsonFile->convertToJson();
+    echo "\n\n" . $response . "\n\n";
+} catch (\Error $e) {
+    echo "Error: " . $e->getMessage() . "\n\n";
+}

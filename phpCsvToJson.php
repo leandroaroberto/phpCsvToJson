@@ -1,5 +1,13 @@
 <?php
 
+/*
+*
+* Developed by Leandro Aparecido Roberto
+* Contact: leroberto@gmail.com
+* Last release date: 2023-05-24
+*
+*/
+
 class Converter
 {
     private $fileOutput;

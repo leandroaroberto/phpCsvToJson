@@ -10,4 +10,5 @@ Enjoy!
 
 ## Screenshot
 
-![2023-05-24_08-52](https://github.com/leandroqa/phpCsvToJson/assets/24318272/95fceb70-5596-41d1-8f89-173a78c7b130)
+
+![2023-05-24_08-52](https://github.com/leandroqa/phpCsvToJson/assets/24318272/b8af01ab-d01a-40cd-a127-2eaf2785e5e0)
